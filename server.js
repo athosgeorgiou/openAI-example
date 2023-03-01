@@ -3,7 +3,7 @@ const express = require('express');
 const { Configuration, OpenAIApi } = require("openai");
 
 // Set up OpenAI API key and engine ID
-const apiKey = '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';
+const apiKey = '';
 
 // Set up Express app
 const app = express();
