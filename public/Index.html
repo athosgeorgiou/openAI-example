@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Text Improvement Tool</title>
+</head>
+<body>
+  <h1>Text Improvement Tool</h1>
+  <form id="textForm">
+    <label for="textInput">Enter some text:</label>
+    <input type="text" id="textInput" name="text" required>
+    <button type="submit">Improve</button>
+  </form>
+  <div id="improvedText"></div>
+  <script>
+    const form = document.getElementById('textForm');
+    const improvedTextDiv = document.getElementById('improvedText');
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      const formData = new FormData(form);
+      const response = await fetch('/improve', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(Object.fromEntries(formData))
+      });
+      const data = await response.json();
+      improvedTextDiv.textContent = data.improvedText;
+    });
+  </script>
+</body>
+</html>
