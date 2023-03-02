@@ -1,9 +1,11 @@
 // Require necessary libraries
 const express = require('express');
 const { Configuration, OpenAIApi } = require("openai");
+require('dotenv').config();
 
 // Set up OpenAI API key and engine ID
-const apiKey = '';
+const apiKey = process.env.API_KEY;
+console.log(apiKey);
 
 // Set up Express app
 const app = express();
